@@ -1,0 +1,15 @@
+apply from: "$rootDir/gradle/jacoco.gradle"
+apply from: "$rootDir/gradle/maven.gradle"
+apply from: "$rootDir/gradle/checkstyle.gradle"
+apply from: "$rootDir/gradle/javadoc.gradle"
+
+dependencies {
+  compile project(':spotbugs')
+  compileOnly 'com.apple:AppleJavaExtensions:1.4'
+
+  testCompile 'junit:junit:4.12'
+  testCompile 'org.apache.logging.log4j:log4j-slf4j18-impl:2.11.1'
+}
+
+ext.moduleName = 'com.github.spotbugs.gui'
+apply from: "$rootDir/gradle/jigsaw.gradle"
